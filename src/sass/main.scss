@@ -70,9 +70,6 @@ html {
       font-weight: 700;
       color: $darker-purple;
       text-shadow: 3px 3px 1px $light-blue;
-      &:hover {
-        color: white;
-      }
     }
 
     #nav-home:hover {
@@ -81,20 +78,26 @@ html {
 
     a {
       color: $darker-blue;
-      transition: all 0.3s ease;
     }
 
     .active {
       border-bottom: 3px solid $light-blue;
     }
 
-    ul {
+    #links {
       @include flexCenter();
       gap: 10rem;
 
-      li {
+      #home,
+      #shop {
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+
+      #cart__nav {
         position: relative;
-        transition: all 0.4s ease-in-out;
       }
 
       .bi-cart2 {
@@ -103,6 +106,11 @@ html {
         padding: 1.5rem;
         border-radius: 50%;
         position: relative;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $darker-blue;
+        }
 
         &::after {
           font-family: Verdana, sans-serif;
@@ -190,7 +198,7 @@ html {
 
       #cart__dropdown-btns {
         margin-top: auto;
-        height: 8rem;
+        height: 9rem;
         padding: 0.5rem;
         text-align: center;
         font-size: 2rem;
@@ -214,7 +222,7 @@ html {
 
           button {
             text-transform: uppercase;
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             width: 45%;
             height: 3.5rem;
             border: none;

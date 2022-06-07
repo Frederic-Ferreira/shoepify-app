@@ -14,16 +14,14 @@ function Header(props) {
         <Link to="/" id="site-title">
           shoePify
         </Link>
-        <ul>
-          <li>
-            <Link className="active" to="/">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li>
+        <div id="links">
+          <Link id="home" className="active" to="/">
+            Home
+          </Link>
+          <Link id="shop" to="/shop">
+            Shop
+          </Link>
+          <div id="cart__nav">
             <Link to="/cart">
               <i className="bi bi-cart2"></i>
             </Link>
@@ -63,8 +61,8 @@ function Header(props) {
                 </div>
               </div>
             )}
-          </li>
-        </ul>
+          </div>
+        </div>
       </nav>
     </div>
   );
