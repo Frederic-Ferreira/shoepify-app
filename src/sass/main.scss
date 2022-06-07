@@ -65,11 +65,18 @@ html {
     font-family: 'Comfortaa', sans-serif;
 
     #site-title {
+      @include flexCenter();
       font-family: 'Indie Flower', sans-serif;
       font-size: 5rem;
       font-weight: 700;
       color: $darker-purple;
       text-shadow: 3px 3px 1px $light-blue;
+
+      img {
+        margin-left: 1rem;
+        transform: rotate(-33deg);
+        height: 7rem;
+      }
     }
 
     #nav-home:hover {
