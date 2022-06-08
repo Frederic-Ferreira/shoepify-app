@@ -2,9 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
-export function CartDropdown({ shoes, total, event }) {
+export function CartDropdown({
+  shoes,
+  total,
+  event,
+  animation,
+  opacity,
+}) {
   return (
-    <div id="cart__dropdown">
+    <div
+      style={{ animation: animation, opacity: opacity }}
+      id="cart__dropdown"
+    >
       <ul>
         {shoes.map((shoe) => {
           total += shoe.price * shoe.quantity;

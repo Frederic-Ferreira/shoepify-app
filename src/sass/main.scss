@@ -152,19 +152,7 @@ html {
       border-bottom-right-radius: 10px;
       top: 7rem;
       left: -17rem;
-      animation: ease-in 0.7s slide-in;
-
-      &::before {
-        content: '';
-        width: 0;
-        border-right: 15px solid transparent;
-        border-left: 15px solid transparent;
-        border-bottom: 19px solid $middle-blue;
-        position: absolute;
-        top: -1.75rem;
-        left: 18.5rem;
-        z-index: 1;
-      }
+      z-index: -1;
 
       ul {
         @include flexColumn();
@@ -192,6 +180,10 @@ html {
           .minus,
           .plus {
             color: $darker-purple;
+
+            &:active {
+              color: $middle-blue;
+            }
           }
 
           p {
@@ -262,20 +254,53 @@ html {
         }
       }
     }
+
+    #arrow {
+      animation: 1s ease showing;
+      &::before {
+        content: '';
+        width: 0;
+        border-right: 17px solid transparent;
+        border-left: 17px solid transparent;
+        border-bottom: 17px solid $middle-blue;
+        position: absolute;
+        top: 5.5rem;
+        right: 1.5rem;
+        z-index: 1000;
+      }
+    }
   }
 }
 /* --------- SHOP --------- */
 
 /* --------- ANIMATIONS --------- */
 
-@keyframes slide-in {
+@keyframes showing {
   0% {
     opacity: 0;
-    transform: translateY(-100%);
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
     transform: translateY(0%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
   }
 }
 
