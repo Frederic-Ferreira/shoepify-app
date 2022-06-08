@@ -79,7 +79,7 @@ export const ShoeList = [
     },
     sexe: 'women',
     brand: 'nike',
-    price: 129.99,
+    price: 179.99,
     quantity: 1,
   },
   {

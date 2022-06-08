@@ -1,23 +1,9 @@
-import { CartDropdown } from './CartDropdown';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import shoe from '../images/icon/icon.png';
 import Cart from './Cart';
 
 function Header(props) {
-  const [showCart, setShowCart] = useState('0');
-  const [slide, setSlide] = useState('0.7s ease slide-out');
-
-  const { shoes } = props;
-
-  let total = 0;
-
-  const toggleShowCart = () => {
-    showCart === '0' ? setShowCart('1') : setShowCart('0');
-    slide === '0.7s ease slide-in'
-      ? setSlide('0.7s ease slide-out')
-      : setSlide('0.7s ease slide-in');
-  };
+  const { shoes, event } = props;
 
   return (
     <div id="header">
@@ -34,15 +20,7 @@ function Header(props) {
             Shop
           </Link>
           <div id="cart__nav">
-            <Cart event={toggleShowCart} shoeList={shoes} />
-            <CartDropdown
-              opacity={showCart}
-              animation={slide}
-              event={toggleShowCart}
-              shoes={shoes}
-              total={total}
-            />
-            <div style={{ opacity: showCart }} id="arrow"></div>
+            <Cart event={event} shoeList={shoes} />
           </div>
         </div>
       </nav>

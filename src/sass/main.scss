@@ -30,6 +30,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  position: relative;
+}
+
 @mixin flexCenter {
   display: flex;
   justify-content: center;
@@ -58,6 +62,8 @@ html {
   background-color: $light-purple;
   border-bottom: 3px solid $light-blue;
   padding: 1rem 5rem;
+  position: relative;
+  z-index: 2;
 
   nav {
     @include flexBetween();
@@ -139,150 +145,151 @@ html {
       font-weight: 500;
       color: white;
     }
+  }
+}
 
-    #cart__dropdown {
+/* --------- DROPDOWN --------- */
+
+#cart__dropdown {
+  @include flexColumn();
+  font-family: 'Comfortaa', sans-serif;
+  height: 30rem;
+  width: 28rem;
+  position: absolute;
+  border-left: 3px solid $middle-blue;
+  border-right: 3px solid $middle-blue;
+  border-bottom: 3px solid $middle-blue;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  top: 10rem;
+  right: 2rem;
+  z-index: 1;
+
+  ul {
+    @include flexColumn();
+    gap: 0;
+    overflow: scroll;
+  }
+
+  li {
+    @include flexBetween();
+    width: 100%;
+    font-size: 2rem;
+    padding: 1rem;
+    border-bottom: 1px solid black;
+
+    img {
+      height: 50px;
+      width: 50px;
+    }
+
+    .column-wrapper {
       @include flexColumn();
-      height: 30rem;
-      width: 28rem;
-      position: absolute;
-      border-left: 3px solid $middle-blue;
-      border-right: 3px solid $middle-blue;
-      border-bottom: 3px solid $middle-blue;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      top: 7rem;
-      left: -17rem;
-      z-index: -1;
+      text-align: center;
+      gap: 0.5rem;
 
-      ul {
-        @include flexColumn();
-        gap: 0;
-        overflow: scroll;
+      .minus,
+      .plus {
+        color: $darker-purple;
+
+        &:active {
+          color: $middle-blue;
+        }
       }
 
-      li {
-        @include flexBetween();
+      p {
+        font-size: 1.25rem;
+      }
+
+      h3 {
+        letter-spacing: 0.1rem;
+        font-size: 1.75rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  #cart__dropdown-btns {
+    margin-top: auto;
+    height: 9rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Sora';
+    font-weight: 300;
+    background-color: #e4e7f6;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+
+    p {
+      margin-top: 0.5rem;
+    }
+
+    span {
+      font-weight: 500;
+    }
+
+    .row-wrapper {
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        text-transform: uppercase;
+        margin-top: 1rem;
+        width: 45%;
+        height: 3.5rem;
+        border: none;
+        border-radius: 5px;
+        color: white;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      #checkout {
         width: 100%;
-        font-size: 2rem;
-        padding: 1rem;
-        border-bottom: 1px solid black;
-
-        img {
-          height: 50px;
-          width: 50px;
-        }
-
-        .column-wrapper {
-          @include flexColumn();
-          text-align: center;
-          gap: 0.5rem;
-
-          .minus,
-          .plus {
-            color: $darker-purple;
-
-            &:active {
-              color: $middle-blue;
-            }
-          }
-
-          p {
-            font-size: 1.25rem;
-          }
-
-          h3 {
-            letter-spacing: 0.1rem;
-            font-size: 1.75rem;
-            font-weight: bold;
-          }
+        padding: 0 2rem;
+        background-color: $darker-blue;
+        &:hover {
+          background-color: $middle-blue;
         }
       }
 
-      #cart__dropdown-btns {
-        margin-top: auto;
-        height: 9rem;
-        padding: 0.5rem;
-        text-align: center;
-        font-size: 2rem;
-        font-family: 'Sora';
-        font-weight: 300;
-        background-color: #e4e7f6;
-        border-bottom-left-radius: 7px;
-        border-bottom-right-radius: 7px;
-
-        p {
-          margin-top: 0.5rem;
-        }
-
-        span {
-          font-weight: 500;
-        }
-
-        .row-wrapper {
-          display: flex;
-          justify-content: space-around;
-
-          button {
-            text-transform: uppercase;
-            margin-top: 1rem;
-            width: 45%;
-            height: 3.5rem;
-            border: none;
-            border-radius: 5px;
-            color: white;
-
-            &:hover {
-              cursor: pointer;
-            }
-          }
-
-          #checkout {
-            width: 100%;
-            padding: 0 2rem;
-            background-color: $darker-blue;
-            &:hover {
-              background-color: $middle-blue;
-            }
-          }
-
-          #close {
-            background-color: $btn-close;
-            &:hover {
-              background-color: #fd8282;
-            }
-          }
+      #close {
+        background-color: $btn-close;
+        &:hover {
+          background-color: #fd8282;
         }
       }
     }
+  }
+}
 
-    #arrow {
-      animation: 1s ease showing;
-      &::before {
-        content: '';
-        width: 0;
-        border-right: 17px solid transparent;
-        border-left: 17px solid transparent;
-        border-bottom: 17px solid $middle-blue;
-        position: absolute;
-        top: 5.5rem;
-        right: 1.5rem;
-        z-index: 1000;
-      }
-    }
+#arrow {
+  &::before {
+    content: '';
+    width: 0;
+    border-right: 17px solid transparent;
+    border-left: 17px solid transparent;
+    border-bottom: 17px solid $middle-blue;
+    position: absolute;
+    top: 8rem;
+    right: 6.5rem;
+    z-index: 3;
   }
 }
 /* --------- SHOP --------- */
 
-/* --------- ANIMATIONS --------- */
-
-@keyframes showing {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+#shop {
+  height: calc(100vh - 10rem);
 }
+
+#sidebar {
+  width: 20%;
+}
+
+/* --------- ANIMATIONS --------- */
 
 @keyframes slide-in {
   0% {
@@ -299,7 +306,7 @@ html {
     transform: translateY(0%);
   }
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-100%);
   }
 }
