@@ -1,6 +1,6 @@
 import { CartDropdown } from './CartDropdown';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import shoe from '../images/icon/icon.png';
 import Cart from './Cart';
 
@@ -14,20 +14,6 @@ function Header(props) {
   const toggleShowCart = () => {
     setShowCart(!showCart);
   };
-
-  useEffect(() => {
-    const name = location.pathname.replace('/', '');
-
-    document.querySelectorAll('.nav').forEach((nav) => {
-      nav.classList.remove('active');
-    });
-
-    if (name !== 'cart') {
-      name === 'shop'
-        ? document.querySelector('.shop').classList.add('active')
-        : document.querySelector('.home').classList.add('active');
-    }
-  });
 
   return (
     <div id="header">

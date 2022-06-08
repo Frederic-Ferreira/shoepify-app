@@ -29,7 +29,7 @@ export function CartDropdown({ shoes, total, event }) {
           Total: <span id="total">{total + ' €'}</span>
         </p>
         <div className="row-wrapper">
-          <Link onClick={event} to="/cart">
+          <Link onClick={event} to="/checkout">
             <button id="checkout" type="button">
               Checkout
             </button>

@@ -72,6 +72,10 @@ html {
       color: $darker-purple;
       text-shadow: 3px 3px 1px $light-blue;
 
+      &:active {
+        animation: 0.5s ease shake;
+      }
+
       img {
         margin-left: 1rem;
         transform: rotate(-33deg);
@@ -79,24 +83,22 @@ html {
       }
     }
 
-    #nav-home:hover {
-      transform: scale(1.1);
-    }
-
     a {
       color: $darker-blue;
     }
 
     .active {
-      border-bottom: 3px solid $light-blue;
+      text-decoration: underline;
+      text-decoration-color: $light-blue;
+      text-decoration-thickness: 3px;
     }
 
     #links {
       @include flexCenter();
       gap: 10rem;
 
-      #home,
-      #shop {
+      .home,
+      .shop {
         transition: all 0.3s ease-in-out;
         &:hover {
           transform: scale(1.2);
@@ -262,6 +264,7 @@ html {
     }
   }
 }
+/* --------- SHOP --------- */
 
 /* --------- ANIMATIONS --------- */
 
@@ -273,5 +276,23 @@ html {
   100% {
     opacity: 1;
     transform: translateY(0%);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: skewY(3deg);
+  }
+  25% {
+    transform: skewY(-3deg);
+  }
+  50% {
+    transform: skewY(2deg);
+  }
+  75% {
+    transform: skewY(-2deg);
+  }
+  100% {
+    transform: skewY(0deg);
   }
 }
