@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
-export function CartDropdown({ shoes, total }) {
+export function CartDropdown({ shoes, total, event }) {
   return (
     <div id="cart__dropdown">
       <ul>
@@ -28,10 +29,12 @@ export function CartDropdown({ shoes, total }) {
           Total: <span id="total">{total + ' €'}</span>
         </p>
         <div className="row-wrapper">
-          <button id="checkout" type="button">
-            Checkout
-          </button>
-          <button id="close" type="button">
+          <Link onClick={event} to="/cart">
+            <button id="checkout" type="button">
+              Checkout
+            </button>
+          </Link>
+          <button onClick={event} id="close" type="button">
             Close
           </button>
         </div>

@@ -8,15 +8,15 @@ import MirageSportPpl from '../images/puma/men/Baskets-Mirage-Sport-tech-ppl.jpg
 import MirageSportScd from '../images/puma/men/Baskets-Mirage-Sport-tech-second.jpeg';
 import MirageSportThrd from '../images/puma/men/Baskets-Mirage-Sport-tech-third.jpg';
 
-import CaliDreamPpl from '../images/puma/women/Baskets-Cali-Dream-ppl.jpg';
-import CaliDreamScd from '../images/puma/women/Baskets-Cali-Dream-second.jpg';
-import CaliDreamThrd from '../images/puma/women/Baskets-Cali-Dream-third.jpg';
-import FutureRiderPpl from '../images/puma/women/Baskets-Future-Rider-ppl.jpg';
-import FutureRiderScd from '../images/puma/women/Baskets-Future-Rider-second.jpg';
-import FutureRiderThrd from '../images/puma/women/Baskets-Future-Rider-third.jpg';
-import MayzeClassicPpl from '../images/puma/women/Baskets-Mayze-Classic-ppl.jpg';
-import MayzeClassicScd from '../images/puma/women/Baskets-Mayze-Classic-second.jpg';
-import MayzeClassicThrd from '../images/puma/women/Baskets-Mayze-Classic-third.jpg';
+import CaliDreamPpl from '../images/puma/women/Baskets-Cali-Dream-ppl.png';
+import CaliDreamScd from '../images/puma/women/Baskets-Cali-Dream-second.png';
+import CaliDreamThrd from '../images/puma/women/Baskets-Cali-Dream-third.png';
+import FutureRiderPpl from '../images/puma/women/Baskets-Future-Rider-ppl.png';
+import FutureRiderScd from '../images/puma/women/Baskets-Future-Rider-second.png';
+import FutureRiderThrd from '../images/puma/women/Baskets-Future-Rider-third.png';
+import MayzeClassicPpl from '../images/puma/women/Baskets-Mayze-Classic-ppl.png';
+import MayzeClassicScd from '../images/puma/women/Baskets-Mayze-Classic-second.png';
+import MayzeClassicThrd from '../images/puma/women/Baskets-Mayze-Classic-third.png';
 
 export const pumaMen = {
   caProClassic: {
