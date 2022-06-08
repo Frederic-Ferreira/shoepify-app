@@ -52,7 +52,7 @@ function App() {
       <div style={{ opacity: showCart }} id="arrow"></div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop" element={<Shop shoelist={shoeList} />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>

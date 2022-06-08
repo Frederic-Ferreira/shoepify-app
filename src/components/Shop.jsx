@@ -1,38 +1,51 @@
-function Shop() {
+import { Sidebar } from './../../Sidebar';
+import { useEffect, useState } from 'react';
+
+function Shop({ shoelist }) {
+  const [sexe, setSexe] = useState('men');
+  const [brand, setBrand] = useState('all');
+  const [price, setPrice] = useState(100);
+
+  const [image, setImage] = useState('ppl');
+
+  const handleChange = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const handleHover = (e) => {
+    const name = e.target.dataset.name;
+    const [shoe] = shoelist.filter((shoe) => shoe.name === name);
+    e.target.src = shoe.images.thrd;
+  };
+
+  const handleLeave = (e) => {
+    const name = e.target.dataset.name;
+    const [shoe] = shoelist.filter((shoe) => shoe.name === name);
+    e.target.src = shoe.images.ppl;
+  };
+
   return (
     <div id="shop">
-      <div id="sidebar">
-        <div id="sexe-input">
-          <p>For</p>
-          <label htmlFor="men">Men: </label>
-          <input type="checkbox" id="men" />
-          <label htmlFor="men">Women: </label>
-          <input type="checkbox" id="women" />
-        </div>
-        <div id="brand-input">
-          <p>Brand</p>
-          <select name="brand" id="brand">
-            <option value="all">All</option>
-            <option value="adidas">Adidas</option>
-            <option value="nike">Nike</option>
-            <option value="puma">puma</option>
-          </select>
-        </div>
-        <div id="price-input">
-          <p>Price</p>
-          <div className="row-wrapper">
-            <input
-              type="number"
-              min="90"
-              max="180"
-              step="10"
-              placeholder="between 90€ - 180€"
-            />
-            <p>€</p>
-          </div>
-        </div>
+      <Sidebar price={price} handleChange={handleChange} />
+      <div id="list-items">
+        <ul>
+          {shoelist.map((shoe) => {
+            return (
+              <li className="card">
+                <img
+                  onMouseEnter={handleHover}
+                  onMouseLeave={handleLeave}
+                  src={shoe.images.ppl}
+                  alt="shoe image"
+                  data-name={shoe.name}
+                />
+                <p>{shoe.name}</p>
+                <h3>{shoe.price * shoe.quantity + ' €'}</h3>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-      <div id="list-items"></div>
     </div>
   );
 }

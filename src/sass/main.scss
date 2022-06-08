@@ -7,10 +7,12 @@
 // font-family: 'Oxygen', 300, 400, 700 sans-serif;
 // font-family: 'Sora', 100, 300, 500 sans-serif;
 
+$lighter-blue: #cce8f4;
 $light-blue: #84ceeb;
 $middle-blue: #59b8eb;
 $darker-blue: #5480e9;
 $light-purple: #e4e7f6;
+$middle-purple: #b292ef;
 $darker-purple: #8860d0;
 $btn-close: #f15d5d;
 
@@ -283,10 +285,110 @@ body {
 
 #shop {
   height: calc(100vh - 10rem);
+  display: flex;
 }
 
 #sidebar {
+  padding: 7rem 3.3rem;
+  @include flexColumn();
+  gap: 3.3rem;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 2rem;
+  height: 100%;
   width: 20%;
+  color: white;
+  background-color: $middle-purple;
+  border-right: 3px solid $light-blue;
+
+  h1 {
+    font-family: 'Sora', sans-serif;
+    margin-bottom: 2rem;
+    letter-spacing: 0.25rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: $light-blue;
+    border-bottom: 3px solid $light-blue;
+  }
+
+  .row-wrapper {
+    display: flex;
+    gap: 3rem;
+    position: relative;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  input {
+    position: absolute;
+    top: 5px;
+    left: 10rem;
+  }
+
+  #price {
+    position: static;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+
+#list-items {
+  padding: 5rem 0 0 15rem;
+  width: 100%;
+  background-color: $lighter-blue;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5rem;
+    row-gap: 3rem;
+  }
+
+  .card {
+    font-family: 'Manrope', sans-serif;
+    background-color: white;
+    font-size: 1.5rem;
+    height: 280px;
+    width: 250px;
+    padding-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid $middle-blue;
+    box-shadow: 4px 4px 1px $middle-blue;
+    transition: all 0.5s ease;
+
+    &:hover {
+      cursor: pointer;
+      // transform: translate(-5px, 5px);
+      transform: scale(1.1);
+      box-shadow: 7px 5px 5px $middle-blue;
+    }
+
+    img {
+      height: 210px;
+      width: 100%;
+      border-bottom: 1px solid $middle-blue;
+      border-top-right-radius: 9px;
+      border-top-left-radius: 9px;
+    }
+
+    p,
+    h3 {
+      padding-left: 1rem;
+    }
+
+    p {
+      padding-top: 0.5rem;
+    }
+  }
 }
 
 /* --------- ANIMATIONS --------- */
