@@ -29,20 +29,24 @@ function Shop({ shoelist }) {
       <Sidebar price={price} handleChange={handleChange} />
       <div id="list-items">
         <ul>
-          {shoelist.map((shoe) => {
-            return (
-              <li className="card">
-                <img
-                  onMouseEnter={handleHover}
-                  onMouseLeave={handleLeave}
-                  src={shoe.images.ppl}
-                  alt="shoe image"
-                  data-name={shoe.name}
-                />
-                <p>{shoe.name}</p>
-                <h3>{shoe.price * shoe.quantity + ' €'}</h3>
-              </li>
-            );
+          {shoelist.map((shoe, i) => {
+            if (shoelist.length > 6) {
+              if (i < 6) {
+                return (
+                  <li className="card">
+                    <img
+                      onMouseEnter={handleHover}
+                      onMouseLeave={handleLeave}
+                      src={shoe.images.ppl}
+                      alt="shoe image"
+                      data-name={shoe.name}
+                    />
+                    <p>{shoe.name}</p>
+                    <h3>{shoe.price * shoe.quantity + ' €'}</h3>
+                  </li>
+                );
+              }
+            }
           })}
         </ul>
       </div>
