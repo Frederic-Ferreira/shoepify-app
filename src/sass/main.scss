@@ -287,7 +287,6 @@ body {
 #shop {
   height: calc(100vh - 10rem);
   display: flex;
-  position: relative;
 
   #sidebar {
     padding: 7rem 3.3rem;
@@ -368,14 +367,11 @@ body {
       padding-bottom: 1rem;
       border-radius: 7px;
       border: 2px solid $lighter-blue;
-      // box-shadow: 3px 3px 10px $light-blue;
       transition: all 0.5s ease;
 
       &:hover {
         cursor: pointer;
-        // transform: translate(-5px, 5px);
         transform: scale(1.1);
-        // box-shadow: 7px 5px 10px $light-blue;
       }
 
       img {
@@ -475,6 +471,114 @@ body {
 
       &:active {
         transform: translate(1px, 1px);
+      }
+    }
+  }
+
+  #overlay {
+    @include flexCenter();
+    position: absolute;
+    height: calc(100vh - 10rem);
+    width: 100vw;
+    background-color: #47474761;
+
+    #chosen-shoe {
+      display: flex;
+      height: 80%;
+      width: 60%;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.912);
+
+      .image-display {
+        display: flex;
+        overflow: visible;
+        width: 70%;
+        border-right: 1px solid black;
+        font-size: 5rem;
+        position: relative;
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+
+        .arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 1;
+
+          &:hover {
+            cursor: pointer;
+            font-weight: bold;
+          }
+        }
+
+        .left {
+          left: 1rem;
+        }
+
+        .right {
+          right: 1rem;
+        }
+      }
+
+      .infos-display {
+        font-family: 'Oxygen', sans-serif;
+        @include flexColumn();
+        align-items: center;
+        gap: 5rem;
+        width: 30%;
+        font-size: 2rem;
+        padding: 5rem 0 2rem 0;
+
+        h1 {
+          font-size: 2rem;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+
+        h2 {
+          font-size: 3rem;
+          font-weight: 500;
+        }
+
+        h3 {
+          font-size: 3.3rem;
+        }
+
+        p {
+          font-size: 1.5rem;
+          text-transform: uppercase;
+        }
+
+        .row-wrapper {
+          @include flexCenter();
+          gap: 1rem;
+        }
+
+        #add-to-cart {
+          @include flexColumn();
+          align-items: center;
+          margin-top: auto;
+          gap: 2rem;
+          button {
+            background-color: $light-blue;
+            color: white;
+            border: none;
+            font-size: 2rem;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
   }
