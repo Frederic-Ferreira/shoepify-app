@@ -347,9 +347,10 @@ body {
   }
 
   #list-items {
-    padding: 2rem 0 0 15rem;
+    padding: 2rem 0 0 11rem;
     width: 100%;
     background-color: white;
+    position: relative;
 
     ul {
       display: flex;
@@ -409,11 +410,12 @@ body {
 
   #buttons {
     @include flexBetween();
+    width: 90%;
     font-family: 'Comfortaa', sans-serif;
     font-size: 1.75rem;
-    position: relative;
-    bottom: -1.5rem;
-    left: -6rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 5rem;
 
     h3 {
       position: absolute;
@@ -432,12 +434,12 @@ body {
       .row-wrapper {
         @include flexCenter();
         gap: 1rem;
-        background: $darker-purple;
+        background: $middle-purple;
         padding: 0.5rem 1.1rem 0.25rem 1.1rem;
         border-radius: 20px;
 
         &:hover {
-          background-color: $darker-blue;
+          background-color: $lighter-blue;
         }
 
         p {
@@ -451,12 +453,26 @@ body {
     }
 
     #previous-page .row-wrapper {
+      &:hover {
+        p,
+        .bi {
+          color: black;
+        }
+      }
+
       &:active {
         transform: translate(-1px, 1px);
       }
     }
 
     #next-page .row-wrapper {
+      &:hover {
+        p,
+        .bi {
+          color: black;
+        }
+      }
+
       &:active {
         transform: translate(1px, 1px);
       }
