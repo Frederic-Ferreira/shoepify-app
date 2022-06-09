@@ -1,3 +1,4 @@
+import { ButtonsPages } from './ButtonsPages';
 import { ShoeList } from './ShoeList';
 import { Sidebar } from './Sidebar';
 import { useEffect, useState } from 'react';
@@ -38,7 +39,7 @@ function Shop({ shoelist }) {
     setCurrentPage(currentPage + 1);
   };
 
-  const onBrandChange = (e) => {
+  const handleBrandChange = (e) => {
     const target = e.target.id;
     const all = document.getElementById('all');
     const adidas = document.getElementById('adidas');
@@ -157,6 +158,14 @@ function Shop({ shoelist }) {
         ? finalList.filter(
             (shoe) => shoe.brand === 'adidas' || shoe.brand === 'nike'
           )
+        : brand === 'adidas puma'
+        ? finalList.filter(
+            (shoe) => shoe.brand === 'adidas' || shoe.brand === 'puma'
+          )
+        : brand === 'nike puma'
+        ? finalList.filter(
+            (shoe) => shoe.brand === 'puma' || shoe.brand === 'nike'
+          )
         : brand === 'adidas nike puma'
         ? finalList.filter(
             (shoe) =>
@@ -174,12 +183,13 @@ function Shop({ shoelist }) {
         : finalList.filter((shoe) => shoe.price <= price);
 
     setDisplayedShoes(finalList);
+    setCurrentPage(1);
   }, [sexe, brand, price]);
 
   return (
     <div id="shop">
       <Sidebar
-        brandChange={onBrandChange}
+        brandChange={handleBrandChange}
         sexeChange={onSexeChange}
         price={price}
         handleChange={handlePriceChange}
@@ -199,29 +209,12 @@ function Shop({ shoelist }) {
             }
           })}
         </ul>
-        <div id="buttons">
-          {pagesNumber > 1 && (
-            <>
-              <div onClick={handlePreviousPage} id="previous-page">
-                {currentPage !== 1 && (
-                  <div className="row-wrapper">
-                    <p>{currentPage - 1}</p>
-                    <i className="bi bi-arrow-left"></i>
-                  </div>
-                )}
-              </div>
-              <h3>pages</h3>
-              <div onClick={handleNextPage} id="next-page">
-                {currentPage !== pagesNumber && (
-                  <div className="row-wrapper">
-                    <i className="bi bi-arrow-right"></i>
-                    <p>{currentPage + 1}</p>
-                  </div>
-                )}
-              </div>
-            </>
-          )}
-        </div>
+        <ButtonsPages
+          pagesNumber={pagesNumber}
+          handlePreviousPage={handlePreviousPage}
+          currentPage={currentPage}
+          handleNextPage={handleNextPage}
+        />
       </div>
     </div>
   );
