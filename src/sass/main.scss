@@ -287,107 +287,179 @@ body {
 #shop {
   height: calc(100vh - 10rem);
   display: flex;
-}
+  position: relative;
 
-#sidebar {
-  padding: 7rem 3.3rem;
-  @include flexColumn();
-  gap: 3.3rem;
-  font-family: 'Comfortaa', sans-serif;
-  font-size: 2rem;
-  height: 100%;
-  width: 20%;
-  color: white;
-  background-color: $middle-purple;
-  border-right: 3px solid $light-blue;
+  #sidebar {
+    padding: 7rem 3.3rem;
+    @include flexColumn();
+    gap: 3.3rem;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 2rem;
+    height: 100%;
+    width: 20%;
+    color: white;
+    background-color: $middle-purple;
+    border-right: 3px solid $light-blue;
 
-  h1 {
-    font-family: 'Sora', sans-serif;
-    margin-bottom: 2rem;
-    letter-spacing: 0.25rem;
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: $light-blue;
-    border-bottom: 3px solid $light-blue;
-  }
-
-  .row-wrapper {
-    display: flex;
-    gap: 3rem;
-    position: relative;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  input {
-    position: absolute;
-    top: 5px;
-    left: 10rem;
-  }
-
-  #price {
-    position: static;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  p {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-}
-
-#list-items {
-  padding: 2rem 0 0 15rem;
-  width: 100%;
-  background-color: white;
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 5rem;
-    row-gap: 3rem;
-  }
-
-  .card {
-    font-family: 'Manrope', sans-serif;
-    background-color: white;
-    font-size: 1.5rem;
-    height: 280px;
-    width: 250px;
-    padding-bottom: 1rem;
-    border-radius: 10px;
-    border: 1px solid $light-blue;
-    // box-shadow: 2px 2px 10px $light-blue;
-    transition: all 0.5s ease;
-
-    &:hover {
-      cursor: pointer;
-      // transform: translate(-5px, 5px);
-      transform: scale(1.1);
-      // box-shadow: 7px 5px 10px $light-blue;
+    h1 {
+      font-family: 'Sora', sans-serif;
+      margin-bottom: 2rem;
+      letter-spacing: 0.25rem;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: $light-blue;
+      border-bottom: 3px solid $light-blue;
     }
 
-    img {
-      height: 210px;
-      width: 100%;
-      border-bottom: 1px solid $middle-blue;
-      border-top-right-radius: 9px;
-      border-top-left-radius: 9px;
+    .row-wrapper {
+      display: flex;
+      gap: 3rem;
+      position: relative;
     }
 
-    p,
-    h3 {
-      padding-left: 1rem;
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      position: absolute;
+      top: 5px;
+      left: 10rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    #price {
+      position: static;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     p {
-      padding-top: 0.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  }
+
+  #list-items {
+    padding: 2rem 0 0 15rem;
+    width: 100%;
+    background-color: white;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 5rem;
+      row-gap: 3rem;
+    }
+
+    .card {
+      font-family: 'Comfortaa', sans-serif;
+      background-color: white;
+      font-size: 1.5rem;
+      height: 280px;
+      width: 250px;
+      padding-bottom: 1rem;
+      border-radius: 7px;
+      border: 2px solid $lighter-blue;
+      // box-shadow: 3px 3px 10px $light-blue;
+      transition: all 0.5s ease;
+
+      &:hover {
+        cursor: pointer;
+        // transform: translate(-5px, 5px);
+        transform: scale(1.1);
+        // box-shadow: 7px 5px 10px $light-blue;
+      }
+
+      img {
+        height: 210px;
+        width: 100%;
+        border-bottom: 1.75px solid $light-purple;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+      }
+
+      .row-wrapper {
+        @include flexColumn();
+      }
+      p,
+      h3 {
+        padding-left: 1rem;
+      }
+
+      h3 {
+        margin-left: auto;
+        padding-right: 1rem;
+        letter-spacing: 0.15rem;
+      }
+
+      p {
+        padding-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  #buttons {
+    @include flexBetween();
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 1.75rem;
+    position: relative;
+    bottom: -1.5rem;
+    left: -6rem;
+
+    h3 {
+      position: absolute;
+      left: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: $darker-purple;
+    }
+
+    #next-page,
+    #previous-page {
+      border-radius: 50%;
+      cursor: pointer;
+
+      .row-wrapper {
+        @include flexCenter();
+        gap: 1rem;
+        background: $darker-purple;
+        padding: 0.5rem 1.1rem 0.25rem 1.1rem;
+        border-radius: 20px;
+
+        &:hover {
+          background-color: $darker-blue;
+        }
+
+        p {
+          color: white;
+        }
+
+        .bi {
+          color: white;
+        }
+      }
+    }
+
+    #previous-page .row-wrapper {
+      &:active {
+        transform: translate(-1px, 1px);
+      }
+    }
+
+    #next-page .row-wrapper {
+      &:active {
+        transform: translate(1px, 1px);
+      }
     }
   }
 }
