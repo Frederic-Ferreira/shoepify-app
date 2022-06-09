@@ -5,7 +5,7 @@ import { CartDropdown } from './components/CartDropdown';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Checkout from './components/Checkout';
-import { ShoeList } from './ShoeList';
+import { ShoeList } from './ShoesState';
 
 function App() {
   const [shoeList, setShoeList] = useState(ShoeList);
