@@ -488,33 +488,49 @@ body {
       width: 60%;
       border-radius: 20px;
       background-color: rgba(255, 255, 255, 0.912);
+      border: 2px solid $middle-purple;
+      animation: 0.7s ease zoom-in;
 
       .image-display {
         display: flex;
         overflow: visible;
         width: 70%;
-        border-right: 1px solid black;
+        border-right: 2px solid $middle-blue;
         font-size: 5rem;
         position: relative;
         overflow: hidden;
+        z-index: 3;
 
         img {
           position: absolute;
           width: 100%;
-          height: 100%;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
+          height: 93%;
+          bottom: 2.75%;
+          transition: transform 0.5s ease;
+          z-index: 1;
+        }
+
+        .bi {
+          color: $middle-blue;
+
+          &:hover {
+            color: $middle-purple;
+          }
         }
 
         .arrow {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          z-index: 1;
+          z-index: 2;
 
           &:hover {
             cursor: pointer;
             font-weight: bold;
+          }
+
+          &:active {
+            color: $darker-purple;
           }
         }
 
@@ -528,13 +544,13 @@ body {
       }
 
       .infos-display {
-        font-family: 'Oxygen', sans-serif;
+        font-family: 'Comfortaa', sans-serif;
         @include flexColumn();
         align-items: center;
-        gap: 5rem;
+        gap: 6.5rem;
         width: 30%;
         font-size: 2rem;
-        padding: 5rem 0 2rem 0;
+        padding: 5rem 0.5rem 2rem 0.5rem;
 
         h1 {
           font-size: 2rem;
@@ -543,11 +559,14 @@ body {
         }
 
         h2 {
+          text-align: center;
           font-size: 3rem;
           font-weight: 500;
         }
 
         h3 {
+          font-weight: 500;
+          font-family: 'Sora', sans-serif;
           font-size: 3.3rem;
         }
 
@@ -566,8 +585,16 @@ body {
           align-items: center;
           margin-top: auto;
           gap: 2rem;
+
+          .bi {
+            color: $middle-purple;
+
+            &:hover {
+              color: $middle-blue;
+            }
+          }
           button {
-            background-color: $light-blue;
+            background-color: $middle-blue;
             color: white;
             border: none;
             font-size: 2rem;
@@ -576,6 +603,7 @@ body {
 
             &:hover {
               cursor: pointer;
+              background-color: $middle-purple;
             }
           }
         }
@@ -621,5 +649,14 @@ body {
   }
   100% {
     transform: skewY(0deg);
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(0.33);
+  }
+  100% {
+    transform: scale(1);
   }
 }

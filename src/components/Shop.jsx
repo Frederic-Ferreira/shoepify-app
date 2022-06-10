@@ -1,16 +1,15 @@
+import { Overlay } from './../../Overlay';
 import { ButtonsPages } from './ButtonsPages';
 import { ShoeList } from './ShoeList';
 import { Sidebar } from './Sidebar';
 import { useEffect, useState } from 'react';
 import uniqid from 'uniqid';
 
-import AirmaxPpl from '../images/nike/men/air-max-90-ppl.png';
-import AirmaxScd from '../images/nike/men/air-max-90-second.png';
-import AirmaxThrd from '../images/nike/men/air-max-90-third.png';
-
 function Shop({ shoelist }) {
   const [displayedShoes, setDisplayedShoes] = useState(shoelist);
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [curSlide, setCurSlide] = useState(1);
+  const [chosenShoe, setChosenShoe] = useState(null);
 
   const [sexe, setSexe] = useState('all');
   const [brand, setBrand] = useState('all');
@@ -18,6 +17,34 @@ function Shop({ shoelist }) {
 
   const [pagesNumber, setPagesNumber] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleClickOnShoe = (e) => {
+    const name = e.target.closest('li').dataset.name;
+    const [shoe] = shoelist.filter((shoe) => shoe.name === name);
+
+    setChosenShoe(shoe);
+    setShowOverlay(true);
+  };
+
+  const handlePreviousSlide = () => {
+    if (curSlide === 0) {
+      setCurSlide(2);
+    } else {
+      let slide = curSlide;
+      slide--;
+      setCurSlide(slide);
+    }
+  };
+
+  const handleNextSlide = () => {
+    if (curSlide === 2) {
+      setCurSlide(0);
+    } else {
+      let slide = curSlide;
+      slide++;
+      setCurSlide(slide);
+    }
+  };
 
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
@@ -206,6 +233,7 @@ function Shop({ shoelist }) {
                 <ShoeList
                   key={uniqid()}
                   shoe={shoe}
+                  event={handleClickOnShoe}
                   handleHover={handleHover}
                   handleLeave={handleLeave}
                 />
@@ -221,48 +249,12 @@ function Shop({ shoelist }) {
         />
       </div>
       {showOverlay && (
-        <div id="overlay">
-          <div id="chosen-shoe">
-            <div className="image-display">
-              <p className="arrow left">&#x3c;</p>
-              <img
-                style={{ transform: 'translateX(-100%)' }}
-                id="img-scd"
-                src={AirmaxScd}
-                alt=""
-              />
-              <img
-                style={{ transform: 'translateX(0%)' }}
-                id="img-ppl"
-                src={AirmaxPpl}
-                alt=""
-              />
-              <img
-                style={{ transform: 'translateX(100%)' }}
-                id="img-thrd"
-                src={AirmaxThrd}
-                alt=""
-              />
-              <p className="arrow right">&#x3e;</p>
-            </div>
-            <div className="infos-display">
-              <h1>Brand</h1>
-              <h2>Shoe name</h2>
-              <h3>Shoe price</h3>
-              <div id="add-to-cart">
-                <p>quantity</p>
-                <div className="row-wrapper">
-                  <i className="bi minus bi-dash-circle-fill"></i>
-                  <p>0</p>
-                  <i className="bi plus bi-plus-circle-fill"></i>
-                </div>
-                <button id="add-to-cart" type="button">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Overlay
+          shoe={chosenShoe}
+          handlePreviousSlide={handlePreviousSlide}
+          curSlide={curSlide}
+          handleNextSlide={handleNextSlide}
+        />
       )}
     </div>
   );

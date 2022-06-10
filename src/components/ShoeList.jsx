@@ -1,8 +1,8 @@
 import React from 'react';
 
-export function ShoeList({ shoe, handleHover, handleLeave }) {
+export function ShoeList({ shoe, event, handleHover, handleLeave }) {
   return (
-    <li className="card">
+    <li onClick={event} className="card" data-name={shoe.name}>
       <img
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
