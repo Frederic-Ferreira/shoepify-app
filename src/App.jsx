@@ -9,6 +9,7 @@ import { ShoeList } from './ShoesState';
 
 function App() {
   const [shoeList, setShoeList] = useState(ShoeList);
+  const [shoeListCart, setShoeListCart] = useState(shoeList);
   const [showCart, setShowCart] = useState('0');
   const [slide, setSlide] = useState('');
 
@@ -29,6 +30,14 @@ function App() {
     }
   }, [location]);
 
+  useEffect(() => {
+    const filteredList = shoeList.filter(
+      (shoe) => shoe.quantity >= 1
+    );
+
+    setShoeListCart(filteredList);
+  }, [shoeList]);
+
   const toggleShowCart = () => {
     showCart === '0' ? setShowCart('1') : setShowCart('0');
     if (slide === '') setSlide('0.7s ease slide-in');
@@ -41,18 +50,23 @@ function App() {
 
   return (
     <div id="App">
-      <Header event={toggleShowCart} shoes={shoeList} />
+      <Header event={toggleShowCart} shoes={shoeListCart} />
       <CartDropdown
         opacity={showCart}
         animation={slide}
         event={toggleShowCart}
-        shoes={shoeList}
+        shoes={shoeListCart}
         total={total}
       />
       <div style={{ opacity: showCart }} id="arrow"></div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop shoelist={shoeList} />} />
+        <Route
+          path="/shop"
+          element={
+            <Shop setShoeList={setShoeList} shoeList={shoeList} />
+          }
+        />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>

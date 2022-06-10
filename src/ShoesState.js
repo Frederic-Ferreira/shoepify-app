@@ -20,7 +20,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'nike',
     price: 149.99,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Air Zoom Pegasus',
@@ -32,7 +32,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'nike',
     price: 119.99,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'React Infinity Run',
@@ -44,7 +44,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'nike',
     price: 159.99,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Nike Metcon 7',
@@ -56,7 +56,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'nike',
     price: 129.99,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'React Pegasus Trail',
@@ -68,7 +68,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'nike',
     price: 129.99,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Air Max 95',
@@ -80,7 +80,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'nike',
     price: 179.99,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Stan Smith',
@@ -92,7 +92,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'adidas',
     price: 110,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Forum Low',
@@ -104,7 +104,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'adidas',
     price: 100,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Gazelle',
@@ -116,7 +116,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'adidas',
     price: 100,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Stan Smith',
@@ -128,7 +128,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'adidas',
     price: 110,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Forum Low',
@@ -140,7 +140,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'adidas',
     price: 100,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Forum Bold',
@@ -152,7 +152,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'adidas',
     price: 110,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'CA Pro Classic',
@@ -164,7 +164,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'puma',
     price: 90,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Mirage Sport tech',
@@ -176,7 +176,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'puma',
     price: 100,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'City Rider',
@@ -188,7 +188,7 @@ export const ShoeList = [
     sexe: 'men',
     brand: 'puma',
     price: 110,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Future Rider',
@@ -200,7 +200,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'puma',
     price: 90,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Cali Dream Lth',
@@ -212,7 +212,7 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'puma',
     price: 100,
-    quantity: 1,
+    quantity: 0,
   },
   {
     name: 'Mayze Classic',
@@ -224,6 +224,6 @@ export const ShoeList = [
     sexe: 'women',
     brand: 'puma',
     price: 100,
-    quantity: 1,
+    quantity: 0,
   },
 ];

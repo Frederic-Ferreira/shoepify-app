@@ -3,10 +3,11 @@ import { ButtonsPages } from './ButtonsPages';
 import { ShoeList } from './ShoeList';
 import { Sidebar } from './Sidebar';
 import { useEffect, useState } from 'react';
+
 import uniqid from 'uniqid';
 
-function Shop({ shoelist }) {
-  const [displayedShoes, setDisplayedShoes] = useState(shoelist);
+function Shop({ setShoeList, shoeList }) {
+  const [displayedShoes, setDisplayedShoes] = useState(shoeList);
   const [showOverlay, setShowOverlay] = useState(false);
   const [curSlide, setCurSlide] = useState(1);
   const [chosenShoe, setChosenShoe] = useState(null);
@@ -18,9 +19,31 @@ function Shop({ shoelist }) {
   const [pagesNumber, setPagesNumber] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const handleAddQuantity = (e) => {
+    const shoeName = e.target.dataset.shoe;
+    const newShoeList = shoeList.map((shoe) =>
+      shoe.name === shoeName
+        ? { ...shoe, quantity: shoe.quantity + 1 }
+        : shoe
+    );
+
+    setShoeList(newShoeList);
+  };
+
+  const handleRemoveQuantity = (e) => {
+    const shoeName = e.target.dataset.shoe;
+    const newShoeList = shoeList.map((shoe) =>
+      shoe.name === shoeName
+        ? { ...shoe, quantity: shoe.quantity - 1 }
+        : shoe
+    );
+
+    setShoeList(newShoeList);
+  };
+
   const handleClickOnShoe = (e) => {
     const name = e.target.closest('li').dataset.name;
-    const [shoe] = shoelist.filter((shoe) => shoe.name === name);
+    const [shoe] = shoeList.filter((shoe) => shoe.name === name);
 
     setChosenShoe(shoe);
     setShowOverlay(true);
@@ -52,13 +75,13 @@ function Shop({ shoelist }) {
 
   const handleHover = (e) => {
     const name = e.target.dataset.name;
-    const [shoe] = shoelist.filter((shoe) => shoe.name === name);
+    const [shoe] = shoeList.filter((shoe) => shoe.name === name);
     e.target.src = shoe.images.thrd;
   };
 
   const handleLeave = (e) => {
     const name = e.target.dataset.name;
-    const [shoe] = shoelist.filter((shoe) => shoe.name === name);
+    const [shoe] = shoeList.filter((shoe) => shoe.name === name);
     e.target.src = shoe.images.ppl;
   };
 
@@ -170,7 +193,7 @@ function Shop({ shoelist }) {
   }, [displayedShoes]);
 
   useEffect(() => {
-    let initialList = shoelist;
+    let initialList = shoeList;
     let finalList;
 
     finalList =
@@ -250,6 +273,8 @@ function Shop({ shoelist }) {
       </div>
       {showOverlay && (
         <Overlay
+          addQuantity={handleAddQuantity}
+          removeQuantity={handleRemoveQuantity}
           shoe={chosenShoe}
           handlePreviousSlide={handlePreviousSlide}
           curSlide={curSlide}

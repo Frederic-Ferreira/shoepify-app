@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 export function Overlay({
   shoe,
+  addQuantity,
+  removeQuantity,
   handlePreviousSlide,
   curSlide,
   handleNextSlide,
 }) {
+  const [shoeQuantity, setShoeQuantity] = useState(shoe.quantity);
+
+  const handleClickAddQuantity = (e) => {
+    let quantity = shoeQuantity;
+    quantity++;
+    setShoeQuantity(quantity);
+    addQuantity(e);
+  };
+
+  const handleClickRemoveQuantity = (e) => {
+    let quantity = shoeQuantity;
+    quantity--;
+    setShoeQuantity(quantity);
+    removeQuantity(e);
+  };
+
   return (
     <div id="overlay">
       <div id="chosen-shoe">
         <div className="image-display">
           <i
             onClick={handlePreviousSlide}
-            class="bi arrow left bi-arrow-left-circle-fill"
+            className="bi arrow left bi-arrow-left-circle-fill"
           ></i>
           <img
             style={{
@@ -39,7 +57,7 @@ export function Overlay({
           />
           <i
             onClick={handleNextSlide}
-            class="bi arrow right bi-arrow-right-circle-fill"
+            className="bi arrow right bi-arrow-right-circle-fill"
           ></i>
         </div>
         <div className="infos-display">
@@ -49,9 +67,17 @@ export function Overlay({
           <div id="add-to-cart">
             <p>quantity</p>
             <div className="row-wrapper">
-              <i className="bi minus bi-dash-circle-fill"></i>
-              <p>{shoe.quantity}</p>
-              <i className="bi plus bi-plus-circle-fill"></i>
+              <i
+                onClick={handleClickRemoveQuantity}
+                className="bi minus bi-dash-circle-fill"
+                data-shoe={shoe.name}
+              ></i>
+              <p>{shoeQuantity}</p>
+              <i
+                onClick={handleClickAddQuantity}
+                className="bi plus bi-plus-circle-fill"
+                data-shoe={shoe.name}
+              ></i>
             </div>
             <button id="add-to-cart" type="button">
               Add to Cart

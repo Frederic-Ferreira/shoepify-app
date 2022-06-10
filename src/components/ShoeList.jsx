@@ -12,7 +12,7 @@ export function ShoeList({ shoe, event, handleHover, handleLeave }) {
       />
       <div className="row-wrapper">
         <p>{shoe.name}</p>
-        <h3>{shoe.price * shoe.quantity + ' €'}</h3>
+        <h3>{shoe.price + ' €'}</h3>
       </div>
     </li>
   );
