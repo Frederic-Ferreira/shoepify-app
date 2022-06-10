@@ -21,7 +21,7 @@ export function Overlay({
 
   const handleClickRemoveQuantity = (e) => {
     let quantity = shoeQuantity;
-    quantity--;
+    quantity !== 0 ? quantity-- : quantity;
     setShoeQuantity(quantity);
     removeQuantity(e);
   };

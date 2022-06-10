@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+
 import Header from './components/Header';
 import { CartDropdown } from './components/CartDropdown';
 import Home from './components/Home';
@@ -14,7 +15,6 @@ function App() {
   const [slide, setSlide] = useState('');
 
   let location = useLocation();
-  let total = 0;
 
   const toggleShowCart = () => {
     showCart === '0' ? setShowCart('1') : setShowCart('0');
@@ -60,7 +60,6 @@ function App() {
         animation={slide}
         event={toggleShowCart}
         shoes={shoeListCart}
-        total={total}
       />
       <div style={{ opacity: showCart }} id="arrow"></div>
       <Routes>
@@ -75,7 +74,10 @@ function App() {
             />
           }
         />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={<Checkout shoeList={shoeListCart} />}
+        />
       </Routes>
     </div>
   );

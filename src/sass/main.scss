@@ -616,6 +616,136 @@ body {
   }
 }
 
+/* --------- CHECKOUT --------- */
+
+#checkout {
+  height: calc(100vh - 10rem);
+  display: flex;
+  font-family: 'Comfortaa', sans-serif;
+
+  .message {
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+
+  .items-list {
+    @include flexColumn();
+    background-color: rgb(249, 249, 249);
+    width: 70%;
+    border-right: 1px solid rgb(65, 65, 65);
+    padding: 5rem 7rem 3rem 7rem;
+    overflow: scroll;
+
+    li {
+      @include flexBetween();
+      margin-bottom: 2rem;
+      font-weight: 500;
+      font-size: 1.5rem;
+      background-color: white;
+      border: 1px solid black;
+      padding: 1rem;
+      border-radius: 10px;
+      position: relative;
+
+      img {
+        height: 100px;
+        width: 100px;
+      }
+
+      h1 {
+        letter-spacing: 0.2rem;
+        margin-right: 15rem;
+      }
+
+      .row-wrapper {
+        @include flexCenter();
+        font-size: 2rem;
+        gap: 1.5rem;
+        position: absolute;
+        right: 1rem;
+      }
+
+      .bi {
+        font-size: 2.5rem;
+        color: $darker-blue;
+
+        &:hover {
+          color: $darker-purple;
+        }
+      }
+
+      .bi-x-circle {
+        font-size: 3.3rem;
+        color: $btn-close;
+        position: absolute;
+        right: -5rem;
+
+        &:hover {
+          color: #fd8282;
+        }
+      }
+    }
+  }
+
+  #total-checkout {
+    @include flexColumn();
+    align-items: center;
+    gap: 10rem;
+    background-color: #e0f3fb;
+    padding: 15rem 0 2rem 0;
+    width: 30%;
+    color: rgb(65, 65, 65);
+
+    h2 {
+      font-size: 4rem;
+    }
+
+    h1 {
+      font-size: 5rem;
+      letter-spacing: 0.33rem;
+    }
+
+    .column-wrapper {
+      @include flexCenter();
+      gap: 1rem;
+      margin-top: auto;
+
+      button {
+        height: 8rem;
+        width: 17.5rem;
+        text-transform: uppercase;
+        font-size: 2rem;
+        border: none;
+        border-radius: 5px;
+        color: white;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      #checkout-close {
+        background-color: $btn-close;
+
+        &:hover {
+          background-color: #fd8282;
+          color: black;
+        }
+      }
+
+      #checkout-payment {
+        background-color: $light-blue;
+
+        &:hover {
+          background-color: #a6d9ee;
+          color: $darker-purple;
+        }
+      }
+    }
+  }
+}
+
 /* --------- ANIMATIONS --------- */
 
 @keyframes slide-in {

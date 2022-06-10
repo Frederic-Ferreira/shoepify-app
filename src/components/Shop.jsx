@@ -32,11 +32,13 @@ function Shop({ addToCart, setShoeList, shoeList }) {
 
   const handleRemoveQuantity = (e) => {
     const shoeName = e.target.dataset.shoe;
-    const newShoeList = shoeList.map((shoe) =>
-      shoe.name === shoeName
-        ? { ...shoe, quantity: shoe.quantity - 1 }
-        : shoe
-    );
+    const newShoeList = shoeList.map((shoe) => {
+      if (shoe.name === shoeName)
+        return shoe.quantity !== 0
+          ? { ...shoe, quantity: shoe.quantity - 1 }
+          : shoe;
+      else return shoe;
+    });
 
     setShoeList(newShoeList);
   };

@@ -1,13 +1,8 @@
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
-export function CartDropdown({
-  shoes,
-  total,
-  event,
-  animation,
-  opacity,
-}) {
+export function CartDropdown({ shoes, event, animation, opacity }) {
+  let total = 0;
   return (
     <div
       style={{ animation: animation, opacity: opacity }}
