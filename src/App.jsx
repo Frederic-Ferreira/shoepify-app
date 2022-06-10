@@ -16,6 +16,28 @@ function App() {
   let location = useLocation();
   let total = 0;
 
+  const toggleShowCart = () => {
+    showCart === '0' ? setShowCart('1') : setShowCart('0');
+    if (slide === '') setSlide('0.7s ease slide-in');
+    else {
+      slide === '0.7s ease slide-in'
+        ? setSlide('0.7s ease slide-out')
+        : setSlide('0.7s ease slide-in');
+    }
+  };
+
+  const handleAddToCart = () => {
+    const filteredList = shoeList.filter(
+      (shoe) => shoe.quantity >= 1
+    );
+
+    setShoeListCart(filteredList);
+  };
+
+  useEffect(() => {
+    handleAddToCart();
+  }, []);
+
   useEffect(() => {
     const name = location.pathname.replace('/', '');
 
@@ -29,24 +51,6 @@ function App() {
         : document.querySelector('.home').classList.add('active');
     }
   }, [location]);
-
-  useEffect(() => {
-    const filteredList = shoeList.filter(
-      (shoe) => shoe.quantity >= 1
-    );
-
-    setShoeListCart(filteredList);
-  }, [shoeList]);
-
-  const toggleShowCart = () => {
-    showCart === '0' ? setShowCart('1') : setShowCart('0');
-    if (slide === '') setSlide('0.7s ease slide-in');
-    else {
-      slide === '0.7s ease slide-in'
-        ? setSlide('0.7s ease slide-out')
-        : setSlide('0.7s ease slide-in');
-    }
-  };
 
   return (
     <div id="App">
@@ -64,7 +68,11 @@ function App() {
         <Route
           path="/shop"
           element={
-            <Shop setShoeList={setShoeList} shoeList={shoeList} />
+            <Shop
+              addToCart={handleAddToCart}
+              setShoeList={setShoeList}
+              shoeList={shoeList}
+            />
           }
         />
         <Route path="/checkout" element={<Checkout />} />

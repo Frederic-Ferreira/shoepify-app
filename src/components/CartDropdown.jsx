@@ -21,7 +21,9 @@ export function CartDropdown({
               <img src={shoe.images.ppl} />
               <div className="column-wrapper">
                 <p>{shoe.name}</p>
-                <h3>{shoe.price * shoe.quantity + ' €'}</h3>
+                <h3>
+                  {(shoe.price * shoe.quantity).toFixed(2) + ' €'}
+                </h3>
               </div>
               <div className="column-wrapper">
                 <i className="bi plus bi-plus-circle-fill"></i>
@@ -34,7 +36,7 @@ export function CartDropdown({
       </ul>
       <div id="cart__dropdown-btns">
         <p>
-          Total: <span id="total">{total + ' €'}</span>
+          Total: <span id="total">{total.toFixed(2) + ' €'}</span>
         </p>
         <div className="row-wrapper">
           <Link onClick={event} to="/checkout">

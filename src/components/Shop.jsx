@@ -1,4 +1,4 @@
-import { Overlay } from './../../Overlay';
+import { Overlay } from './Overlay';
 import { ButtonsPages } from './ButtonsPages';
 import { ShoeList } from './ShoeList';
 import { Sidebar } from './Sidebar';
@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 import uniqid from 'uniqid';
 
-function Shop({ setShoeList, shoeList }) {
+function Shop({ addToCart, setShoeList, shoeList }) {
   const [displayedShoes, setDisplayedShoes] = useState(shoeList);
   const [showOverlay, setShowOverlay] = useState(false);
   const [curSlide, setCurSlide] = useState(1);
@@ -39,6 +39,10 @@ function Shop({ setShoeList, shoeList }) {
     );
 
     setShoeList(newShoeList);
+  };
+
+  const closeOverlay = () => {
+    setShowOverlay(false);
   };
 
   const handleClickOnShoe = (e) => {
@@ -273,9 +277,11 @@ function Shop({ setShoeList, shoeList }) {
       </div>
       {showOverlay && (
         <Overlay
+          addToCart={addToCart}
           addQuantity={handleAddQuantity}
           removeQuantity={handleRemoveQuantity}
           shoe={chosenShoe}
+          closeOverlay={closeOverlay}
           handlePreviousSlide={handlePreviousSlide}
           curSlide={curSlide}
           handleNextSlide={handleNextSlide}

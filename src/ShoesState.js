@@ -83,7 +83,7 @@ export const ShoeList = [
     quantity: 0,
   },
   {
-    name: 'Stan Smith',
+    name: 'Stan Smith M',
     images: {
       ppl: stanSmith.ppl,
       scd: stanSmith.scd,
@@ -95,7 +95,7 @@ export const ShoeList = [
     quantity: 0,
   },
   {
-    name: 'Forum Low',
+    name: 'Forum Low M',
     images: {
       ppl: forumLow.ppl,
       scd: forumLow.scd,
@@ -119,7 +119,7 @@ export const ShoeList = [
     quantity: 0,
   },
   {
-    name: 'Stan Smith',
+    name: 'Stan Smith W',
     images: {
       ppl: stanSmithW.ppl,
       scd: stanSmithW.scd,
@@ -131,7 +131,7 @@ export const ShoeList = [
     quantity: 0,
   },
   {
-    name: 'Forum Low',
+    name: 'Forum Low W',
     images: {
       ppl: forumLowW.ppl,
       scd: forumLowW.scd,

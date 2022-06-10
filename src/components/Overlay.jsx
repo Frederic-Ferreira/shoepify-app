@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 export function Overlay({
   shoe,
+  closeOverlay,
   addQuantity,
   removeQuantity,
+  addToCart,
   handlePreviousSlide,
   curSlide,
   handleNextSlide,
 }) {
   const [shoeQuantity, setShoeQuantity] = useState(shoe.quantity);
+  const [animation, setAnimation] = useState('1s ease slide-in');
 
   const handleClickAddQuantity = (e) => {
     let quantity = shoeQuantity;
@@ -23,8 +26,14 @@ export function Overlay({
     removeQuantity(e);
   };
 
+  const handleAddToCart = () => {
+    setAnimation('1s ease slide-out');
+    addToCart();
+    setTimeout(closeOverlay, 1000);
+  };
+
   return (
-    <div id="overlay">
+    <div id="overlay" style={{ animation: animation }}>
       <div id="chosen-shoe">
         <div className="image-display">
           <i
@@ -79,7 +88,12 @@ export function Overlay({
                 data-shoe={shoe.name}
               ></i>
             </div>
-            <button id="add-to-cart" type="button">
+            <button
+              onClick={handleAddToCart}
+              id="add-to-cart"
+              type="button"
+              disabled={shoeQuantity === 0 ? true : false}
+            >
               Add to Cart
             </button>
           </div>

@@ -490,7 +490,6 @@ body {
       border-radius: 20px;
       background-color: rgba(255, 255, 255, 0.912);
       border: 2px solid $middle-purple;
-      animation: 0.7s ease zoom-in;
 
       .image-display {
         display: flex;
@@ -606,6 +605,10 @@ body {
               cursor: pointer;
               background-color: $middle-purple;
             }
+
+            &:disabled {
+              background-color: $lighter-blue;
+            }
           }
         }
       }
@@ -655,9 +658,18 @@ body {
 
 @keyframes zoom-in {
   0% {
-    transform: scale(0.33);
+    transform: scale(0.2);
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes zoom-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.1);
   }
 }
