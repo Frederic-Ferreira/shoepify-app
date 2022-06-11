@@ -5,7 +5,7 @@ export function CartDropdown({
   shoes,
   event,
   animation,
-  opacity,
+  visibility,
   shoeList,
   setShoeList,
 }) {
@@ -37,7 +37,7 @@ export function CartDropdown({
 
   return (
     <div
-      style={{ animation: animation, opacity: opacity }}
+      style={{ animation: animation, visibility: visibility }}
       id="cart__dropdown"
     >
       <ul>

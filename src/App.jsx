@@ -11,13 +11,17 @@ import { ShoeList } from './ShoesState';
 function App() {
   const [shoeList, setShoeList] = useState(ShoeList);
   const [shoeListCart, setShoeListCart] = useState([]);
-  const [showCart, setShowCart] = useState('0');
+  const [showCart, setShowCart] = useState('hidden');
   const [slide, setSlide] = useState('');
 
   let location = useLocation();
 
   const toggleShowCart = () => {
-    showCart === '0' ? setShowCart('1') : setShowCart('0');
+    showCart === 'hidden'
+      ? setShowCart('visible')
+      : setTimeout(() => {
+          setShowCart('hidden');
+        }, 700);
     if (slide === '') setSlide('0.7s ease slide-in');
     else {
       slide === '0.7s ease slide-in'
@@ -66,14 +70,14 @@ function App() {
     <div id="App">
       <Header event={toggleShowCart} shoes={shoeListCart} />
       <CartDropdown
-        opacity={showCart}
+        visibility={showCart}
         animation={slide}
         event={toggleShowCart}
         shoes={shoeListCart}
         shoeList={shoeList}
         setShoeList={setShoeList}
       />
-      <div style={{ opacity: showCart }} id="arrow"></div>
+      <div style={{ visibility: showCart }} id="arrow"></div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

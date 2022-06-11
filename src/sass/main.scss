@@ -284,6 +284,40 @@ body {
     z-index: 3;
   }
 }
+
+/* --------- HOME --------- */
+
+#home {
+  height: calc(100vh - 10rem);
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 2rem;
+  @include flexColumn();
+  color: $darker-purple;
+  gap: 1rem;
+  align-items: center;
+  padding-top: 10rem;
+  position: relative;
+
+  video {
+    top: 2rem;
+    position: absolute;
+    animation: 0.7s ease fade-in;
+  }
+
+  h2,
+  h1 {
+    z-index: 2;
+  }
+
+  h1 {
+    top: 5rem;
+  }
+  h2 {
+    position: absolute;
+    bottom: 5rem;
+    animation: 1s infinite ease clignote;
+  }
+}
 /* --------- SHOP --------- */
 
 #shop {
@@ -348,7 +382,7 @@ body {
   }
 
   #list-items {
-    padding: 2rem 0 0 11rem;
+    padding: 2rem 0 0 15rem;
     width: 100%;
     background-color: white;
     position: relative;
@@ -762,6 +796,36 @@ body {
 }
 
 /* --------- ANIMATIONS --------- */
+
+@keyframes clignote {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 @keyframes slide-in {
   0% {
