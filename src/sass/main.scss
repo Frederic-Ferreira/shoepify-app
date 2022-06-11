@@ -291,7 +291,7 @@ body {
   height: calc(100vh - 10rem);
   font-family: 'Comfortaa', sans-serif;
   font-size: 2rem;
-  @include flexColumn();
+  display: flex;
   color: $darker-purple;
   gap: 1rem;
   align-items: center;
@@ -307,15 +307,40 @@ body {
   h2,
   h1 {
     z-index: 2;
+    left: 10rem;
   }
 
   h1 {
+    position: absolute;
     top: 5rem;
   }
   h2 {
     position: absolute;
     bottom: 5rem;
     animation: 1s infinite ease clignote;
+  }
+
+  button {
+    font-family: 'Comfortaa', sans-serif;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    padding: 2.5rem 3.3rem;
+    text-transform: uppercase;
+    background-color: $darker-blue;
+    color: white;
+    font-size: 2.2rem;
+    border: none;
+    border-radius: 50px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $middle-blue;
+
+      &:active {
+        transform: translate(2px, 3px);
+      }
+    }
   }
 }
 /* --------- SHOP --------- */

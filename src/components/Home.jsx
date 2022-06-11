@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import video from '../video/shoelaces.mp4';
 
 function Home() {
@@ -8,7 +9,8 @@ function Home() {
     setTimeout(() => {
       setShowContent(true);
     }, 500);
-  });
+  }, []);
+
   return (
     <div id="home">
       <h1>Hey!</h1>
@@ -20,6 +22,9 @@ function Home() {
         </>
       )}
       <h2>Time to tie your shoes ...</h2>
+      <Link to="/shop">
+        <button type="button">Shop now</button>
+      </Link>
     </div>
   );
 }
