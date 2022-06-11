@@ -252,6 +252,7 @@ body {
       }
 
       #checkout {
+        @include flexCenter();
         width: 100%;
         padding: 0 2rem;
         background-color: $darker-blue;
@@ -483,6 +484,18 @@ body {
     width: 100vw;
     background-color: #47474761;
 
+    .bi-x-lg {
+      position: absolute;
+      top: 2rem;
+      right: 3rem;
+      font-size: 3.3rem;
+      z-index: 100;
+
+      &:hover {
+        color: white;
+      }
+    }
+
     #chosen-shoe {
       display: flex;
       height: 80%;
@@ -702,12 +715,14 @@ body {
     }
 
     h1 {
+      color: black;
       font-size: 5rem;
       letter-spacing: 0.33rem;
     }
 
     .column-wrapper {
       @include flexCenter();
+      width: 90%;
       gap: 1rem;
       margin-top: auto;
 

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 export function Overlay({
   shoe,
   closeOverlay,
-  addQuantity,
-  removeQuantity,
+  updateQuantity,
   addToCart,
   handlePreviousSlide,
   curSlide,
@@ -12,28 +11,42 @@ export function Overlay({
   const [shoeQuantity, setShoeQuantity] = useState(shoe.quantity);
   const [animation, setAnimation] = useState('1s ease slide-in');
 
-  const handleClickAddQuantity = (e) => {
+  const handleClickAddQuantity = () => {
     let quantity = shoeQuantity;
+
     quantity++;
+
     setShoeQuantity(quantity);
-    addQuantity(e);
   };
 
-  const handleClickRemoveQuantity = (e) => {
+  const handleClickRemoveQuantity = () => {
     let quantity = shoeQuantity;
+
     quantity !== 0 ? quantity-- : quantity;
+
     setShoeQuantity(quantity);
-    removeQuantity(e);
   };
 
   const handleAddToCart = () => {
+    const { name } = shoe;
+
     setAnimation('1s ease slide-out');
+
+    updateQuantity(name, shoeQuantity);
     addToCart();
+
+    setTimeout(closeOverlay, 1000);
+  };
+
+  const handleCloseOverlay = () => {
+    setAnimation('1s ease slide-out');
+
     setTimeout(closeOverlay, 1000);
   };
 
   return (
     <div id="overlay" style={{ animation: animation }}>
+      <i onClick={handleCloseOverlay} class="bi bi-x-lg"></i>
       <div id="chosen-shoe">
         <div className="image-display">
           <i

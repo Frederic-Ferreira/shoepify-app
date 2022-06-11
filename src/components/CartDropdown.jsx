@@ -1,8 +1,40 @@
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 
-export function CartDropdown({ shoes, event, animation, opacity }) {
+export function CartDropdown({
+  shoes,
+  event,
+  animation,
+  opacity,
+  shoeList,
+  setShoeList,
+}) {
   let total = 0;
+
+  const handleAddQuantity = (e) => {
+    const shoeName = e.target.closest('li').dataset.name;
+    const newShoeList = shoeList.map((shoe) =>
+      shoe.name === shoeName
+        ? { ...shoe, quantity: shoe.quantity + 1 }
+        : shoe
+    );
+
+    setShoeList(newShoeList);
+  };
+
+  const handleRemoveQuantity = (e) => {
+    const shoeName = e.target.closest('li').dataset.name;
+    const newShoeList = shoeList.map((shoe) => {
+      if (shoe.name === shoeName)
+        return shoe.quantity !== 0
+          ? { ...shoe, quantity: shoe.quantity - 1 }
+          : shoe;
+      else return shoe;
+    });
+
+    setShoeList(newShoeList);
+  };
+
   return (
     <div
       style={{ animation: animation, opacity: opacity }}
@@ -12,18 +44,22 @@ export function CartDropdown({ shoes, event, animation, opacity }) {
         {shoes.map((shoe) => {
           total += shoe.price * shoe.quantity;
           return (
-            <li key={uniqid()}>
+            <li data-name={shoe.name} key={uniqid()}>
               <img src={shoe.images.ppl} />
               <div className="column-wrapper">
                 <p>{shoe.name}</p>
-                <h3>
-                  {(shoe.price * shoe.quantity).toFixed(2) + ' €'}
-                </h3>
+                <h3>{shoe.price.toFixed(2) + ' €'}</h3>
               </div>
               <div className="column-wrapper">
-                <i className="bi plus bi-plus-circle-fill"></i>
+                <i
+                  onClick={handleAddQuantity}
+                  className="bi plus bi-plus-circle-fill"
+                ></i>
                 <p>{shoe.quantity}</p>
-                <i className="bi minus bi-dash-circle-fill"></i>
+                <i
+                  onClick={handleRemoveQuantity}
+                  className="bi minus bi-dash-circle-fill"
+                ></i>
               </div>
             </li>
           );

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 import uniqid from 'uniqid';
 
-function Shop({ addToCart, setShoeList, shoeList }) {
+function Shop({ addToCart, updateQuantity, shoeList }) {
   const [displayedShoes, setDisplayedShoes] = useState(shoeList);
   const [showOverlay, setShowOverlay] = useState(false);
   const [curSlide, setCurSlide] = useState(1);
@@ -19,30 +19,103 @@ function Shop({ addToCart, setShoeList, shoeList }) {
   const [pagesNumber, setPagesNumber] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleAddQuantity = (e) => {
-    const shoeName = e.target.dataset.shoe;
-    const newShoeList = shoeList.map((shoe) =>
-      shoe.name === shoeName
-        ? { ...shoe, quantity: shoe.quantity + 1 }
-        : shoe
-    );
+  const {
+    handleBrandChange,
+    onSexeChange,
+    handlePriceChange,
+    handleClickOnShoe,
+    handleHover,
+    handleLeave,
+    handlePreviousPage,
+    handleNextPage,
+    closeOverlay,
+    handlePreviousSlide,
+    handleNextSlide,
+  } = ShopFunctions(
+    setShowOverlay,
+    shoeList,
+    setChosenShoe,
+    curSlide,
+    setCurSlide,
+    setPrice,
+    setCurrentPage,
+    currentPage,
+    setBrand,
+    setSexe,
+    setPagesNumber,
+    displayedShoes,
+    sexe,
+    brand,
+    price,
+    setDisplayedShoes
+  );
 
-    setShoeList(newShoeList);
-  };
+  return (
+    <div id="shop">
+      <Sidebar
+        brandChange={handleBrandChange}
+        sexeChange={onSexeChange}
+        price={price}
+        handleChange={handlePriceChange}
+      />
+      <div id="list-items">
+        <ul>
+          {displayedShoes.map((shoe, i) => {
+            if (i >= currentPage * 6 - 6 && i < currentPage * 6) {
+              return (
+                <ShoeList
+                  key={uniqid()}
+                  shoe={shoe}
+                  event={handleClickOnShoe}
+                  handleHover={handleHover}
+                  handleLeave={handleLeave}
+                />
+              );
+            }
+          })}
+        </ul>
+        <ButtonsPages
+          pagesNumber={pagesNumber}
+          handlePreviousPage={handlePreviousPage}
+          currentPage={currentPage}
+          handleNextPage={handleNextPage}
+        />
+      </div>
+      {showOverlay && (
+        <Overlay
+          addToCart={addToCart}
+          updateQuantity={updateQuantity}
+          shoe={chosenShoe}
+          closeOverlay={closeOverlay}
+          handlePreviousSlide={handlePreviousSlide}
+          curSlide={curSlide}
+          handleNextSlide={handleNextSlide}
+        />
+      )}
+    </div>
+  );
+}
 
-  const handleRemoveQuantity = (e) => {
-    const shoeName = e.target.dataset.shoe;
-    const newShoeList = shoeList.map((shoe) => {
-      if (shoe.name === shoeName)
-        return shoe.quantity !== 0
-          ? { ...shoe, quantity: shoe.quantity - 1 }
-          : shoe;
-      else return shoe;
-    });
+export default Shop;
 
-    setShoeList(newShoeList);
-  };
-
+function ShopFunctions(
+  setShowOverlay,
+  shoeList,
+  setChosenShoe,
+  curSlide,
+  setCurSlide,
+  setPrice,
+  setCurrentPage,
+  currentPage,
+  setBrand,
+  setSexe,
+  setPagesNumber,
+  displayedShoes,
+  sexe,
+  brand,
+  price,
+  setDisplayedShoes
+) {
   const closeOverlay = () => {
     setShowOverlay(false);
   };
@@ -246,51 +319,17 @@ function Shop({ addToCart, setShoeList, shoeList }) {
     setCurrentPage(1);
   }, [sexe, brand, price]);
 
-  return (
-    <div id="shop">
-      <Sidebar
-        brandChange={handleBrandChange}
-        sexeChange={onSexeChange}
-        price={price}
-        handleChange={handlePriceChange}
-      />
-      <div id="list-items">
-        <ul>
-          {displayedShoes.map((shoe, i) => {
-            if (i >= currentPage * 6 - 6 && i < currentPage * 6) {
-              return (
-                <ShoeList
-                  key={uniqid()}
-                  shoe={shoe}
-                  event={handleClickOnShoe}
-                  handleHover={handleHover}
-                  handleLeave={handleLeave}
-                />
-              );
-            }
-          })}
-        </ul>
-        <ButtonsPages
-          pagesNumber={pagesNumber}
-          handlePreviousPage={handlePreviousPage}
-          currentPage={currentPage}
-          handleNextPage={handleNextPage}
-        />
-      </div>
-      {showOverlay && (
-        <Overlay
-          addToCart={addToCart}
-          addQuantity={handleAddQuantity}
-          removeQuantity={handleRemoveQuantity}
-          shoe={chosenShoe}
-          closeOverlay={closeOverlay}
-          handlePreviousSlide={handlePreviousSlide}
-          curSlide={curSlide}
-          handleNextSlide={handleNextSlide}
-        />
-      )}
-    </div>
-  );
+  return {
+    handleBrandChange,
+    onSexeChange,
+    handlePriceChange,
+    handleClickOnShoe,
+    handleHover,
+    handleLeave,
+    handlePreviousPage,
+    handleNextPage,
+    closeOverlay,
+    handlePreviousSlide,
+    handleNextSlide,
+  };
 }
-
-export default Shop;

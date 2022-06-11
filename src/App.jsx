@@ -10,7 +10,7 @@ import { ShoeList } from './ShoesState';
 
 function App() {
   const [shoeList, setShoeList] = useState(ShoeList);
-  const [shoeListCart, setShoeListCart] = useState(shoeList);
+  const [shoeListCart, setShoeListCart] = useState([]);
   const [showCart, setShowCart] = useState('0');
   const [slide, setSlide] = useState('');
 
@@ -26,7 +26,7 @@ function App() {
     }
   };
 
-  const handleAddToCart = () => {
+  const handleCartUpdate = () => {
     const filteredList = shoeList.filter(
       (shoe) => shoe.quantity >= 1
     );
@@ -34,9 +34,19 @@ function App() {
     setShoeListCart(filteredList);
   };
 
+  const updateQuantity = (shoeName, shoeQuantity) => {
+    const newShoeList = shoeList.map((shoe) => {
+      if (shoe.name === shoeName)
+        return { ...shoe, quantity: shoeQuantity };
+      else return shoe;
+    });
+
+    setShoeList(newShoeList);
+  };
+
   useEffect(() => {
-    handleAddToCart();
-  }, []);
+    handleCartUpdate();
+  }, [shoeList]);
 
   useEffect(() => {
     const name = location.pathname.replace('/', '');
@@ -60,6 +70,8 @@ function App() {
         animation={slide}
         event={toggleShowCart}
         shoes={shoeListCart}
+        shoeList={shoeList}
+        setShoeList={setShoeList}
       />
       <div style={{ opacity: showCart }} id="arrow"></div>
       <Routes>
@@ -68,15 +80,21 @@ function App() {
           path="/shop"
           element={
             <Shop
-              addToCart={handleAddToCart}
-              setShoeList={setShoeList}
+              addToCart={handleCartUpdate}
+              updateQuantity={updateQuantity}
               shoeList={shoeList}
             />
           }
         />
         <Route
           path="/checkout"
-          element={<Checkout shoeList={shoeListCart} />}
+          element={
+            <Checkout
+              shoeList={shoeList}
+              shoeListCart={shoeListCart}
+              setShoeList={setShoeList}
+            />
+          }
         />
       </Routes>
     </div>
