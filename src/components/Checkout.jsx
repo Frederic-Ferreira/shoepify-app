@@ -62,7 +62,7 @@ function Checkout({ shoeList, shoeListCart, setShoeList }) {
       </div>
       <div id="total-checkout">
         <h2>Total</h2>
-        <h1>{total} €</h1>
+        <h1>{total.toFixed(2)} €</h1>
         <div className="column-wrapper">
           <button
             onClick={handleEmptyCart}

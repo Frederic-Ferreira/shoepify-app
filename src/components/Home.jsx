@@ -19,9 +19,9 @@ function Home() {
           <video autoPlay loop height="100%" width="100%">
             <source src={video} />
           </video>
+          <h2>Time to tie your shoes ...</h2>
         </>
       )}
-      <h2>Time to tie your shoes ...</h2>
       <Link to="/shop">
         <button type="button">Shop now</button>
       </Link>
