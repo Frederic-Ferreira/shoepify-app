@@ -4,9 +4,9 @@ import CaProClassicThrd from '../images/puma/men/Baskets-CA-Pro-Classic-third.jp
 import CityRiderPpl from '../images/puma/men/Baskets-City-Rider-ppl.jpg';
 import CityRiderScd from '../images/puma/men/Baskets-City-Rider-second.jpg';
 import CityRiderThrd from '../images/puma/men/Baskets-City-Rider-third.jpg';
-import MirageSportPpl from '../images/puma/men/Baskets-Mirage-Sport-tech-ppl.jpg';
-import MirageSportScd from '../images/puma/men/Baskets-Mirage-Sport-tech-second.jpeg';
-import MirageSportThrd from '../images/puma/men/Baskets-Mirage-Sport-tech-third.jpg';
+import MirageSportPpl from '../images/puma/men/Baskets-Mirage-Sport-Tech-ppl.jpg';
+import MirageSportScd from '../images/puma/men/Baskets-Mirage-Sport-Tech-second.jpeg';
+import MirageSportThrd from '../images/puma/men/Baskets-Mirage-Sport-Tech-third.jpg';
 
 import CaliDreamPpl from '../images/puma/women/Baskets-Cali-Dream-ppl.png';
 import CaliDreamScd from '../images/puma/women/Baskets-Cali-Dream-second.png';
