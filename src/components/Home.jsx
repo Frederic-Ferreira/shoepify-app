@@ -22,6 +22,10 @@ function Home() {
           <h2>Time to tie your shoes ...</h2>
         </>
       )}
+      <p>
+        (If the animation does not play, please allow your browser to
+        auto-play videos.)
+      </p>
       <Link to="/shop">
         <button type="button">Shop now</button>
       </Link>

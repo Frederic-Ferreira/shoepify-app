@@ -320,9 +320,19 @@ body {
     animation: 1s infinite ease clignote;
   }
 
+  p,
+  button {
+    position: absolute;
+  }
+
+  p {
+    bottom: 5%;
+    right: 5%;
+    font-size: 1rem;
+  }
+
   button {
     font-family: 'Comfortaa', sans-serif;
-    position: absolute;
     bottom: 10%;
     right: 5%;
     padding: 2.5rem 3.3rem;
