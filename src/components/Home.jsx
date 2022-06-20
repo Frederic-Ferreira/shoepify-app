@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import video from '../video/shoelaces.mp4';
+import lottie from 'lottie-web';
+
+import laces from '../animation/data.json';
 
 function Home() {
   const [showContent, setShowContent] = useState(false);
@@ -8,6 +10,10 @@ function Home() {
   useEffect(() => {
     setTimeout(() => {
       setShowContent(true);
+      lottie.loadAnimation({
+        container: document.getElementById('svg-container'),
+        animationData: laces,
+      });
     }, 500);
   }, []);
 
@@ -16,16 +22,10 @@ function Home() {
       <h1>Hey!</h1>
       {showContent && (
         <>
-          <video autoPlay loop height="100%" width="100%">
-            <source src={video} />
-          </video>
+          <div id="svg-container" />
           <h2>Time to tie your shoes ...</h2>
         </>
       )}
-      <p>
-        (If the animation does not play, please allow your browser to
-        auto-play videos.)
-      </p>
       <Link to="/shop">
         <button type="button">Shop now</button>
       </Link>

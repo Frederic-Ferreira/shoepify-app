@@ -298,8 +298,13 @@ body {
   padding-top: 10rem;
   position: relative;
 
-  video {
-    top: 2rem;
+  #svg-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     position: absolute;
     animation: 0.7s ease fade-in;
   }
@@ -320,15 +325,8 @@ body {
     animation: 1s infinite ease clignote;
   }
 
-  p,
   button {
     position: absolute;
-  }
-
-  p {
-    bottom: 5%;
-    right: 5%;
-    font-size: 1rem;
   }
 
   button {
