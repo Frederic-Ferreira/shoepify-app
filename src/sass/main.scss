@@ -288,7 +288,7 @@ body {
 /* --------- HOME --------- */
 
 #home {
-  height: calc(100vh - 10rem);
+  min-height: calc(100vh - 10rem);
   font-family: 'Comfortaa', sans-serif;
   font-size: 2rem;
   display: flex;
@@ -354,7 +354,7 @@ body {
 /* --------- SHOP --------- */
 
 #shop {
-  height: calc(100vh - 10rem);
+  min-height: 100%;
   display: flex;
 
   #sidebar {
@@ -363,7 +363,7 @@ body {
     gap: 3.3rem;
     font-family: 'Comfortaa', sans-serif;
     font-size: 2rem;
-    height: 100%;
+    min-height: 100%;
     width: 20%;
     color: white;
     background-color: $middle-purple;
@@ -415,7 +415,9 @@ body {
   }
 
   #list-items {
-    padding: 2rem 0 0 15rem;
+    @include flexColumn();
+    padding: 2rem 0 0 10vw;
+    min-height: calc(100vh - 10rem);
     width: 100%;
     background-color: white;
     position: relative;
@@ -478,9 +480,7 @@ body {
     width: 90%;
     font-family: 'Comfortaa', sans-serif;
     font-size: 1.75rem;
-    position: absolute;
-    bottom: 1rem;
-    left: 5rem;
+    margin: auto 0 1rem 0;
 
     h3 {
       position: absolute;
@@ -627,7 +627,7 @@ body {
         font-family: 'Comfortaa', sans-serif;
         @include flexColumn();
         align-items: center;
-        gap: 6.5rem;
+        gap: 5rem;
         width: 30%;
         font-size: 2rem;
         padding: 5rem 0.5rem 2rem 0.5rem;
@@ -824,6 +824,19 @@ body {
           color: $darker-purple;
         }
       }
+    }
+  }
+}
+
+/* --------- MEDIA QUERIES --------- */
+
+@media (max-width: 1240px) {
+  #shop #list-items .card {
+    height: 250px;
+    width: 220px;
+
+    img {
+      height: 190px;
     }
   }
 }
