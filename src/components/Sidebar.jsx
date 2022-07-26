@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 export function Sidebar({
   sexeChange,
@@ -6,6 +7,33 @@ export function Sidebar({
   price,
   handleChange,
 }) {
+  let hidden = true;
+
+  const handleFilter = () => {
+    if (hidden === true) {
+      document.getElementById('sidebar').style.transform =
+        'translateX(0%)';
+    } else {
+      document.getElementById('sidebar').style.transform =
+        'translateX(-90%)';
+    }
+    hidden = !hidden;
+  };
+
+  useEffect(() => {
+    const sidebar = document.getElementById('sidebar');
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 790) {
+        sidebar.style.transform = 'translateX(0%)';
+        hidden = false;
+      } else if (window.innerWidth < 790) {
+        sidebar.style.transform = 'translateX(-90%)';
+        hidden = true;
+      }
+    });
+  }, [window.innerWidth]);
+
   return (
     <div id="sidebar">
       <div id="sexe-input">
@@ -56,6 +84,19 @@ export function Sidebar({
             id="price"
           />
         </div>
+      </div>
+      <div onClick={handleFilter} id="filters">
+        <p>
+          <span>f</span>
+          <span>i</span>
+          <span>l</span>
+          <span>t</span>
+          <span>e</span>
+          <span>r</span>
+          <span>s</span>
+          <span>&nbsp;</span>
+          <i class="bi bi-filter-circle"></i>
+        </p>
       </div>
     </div>
   );

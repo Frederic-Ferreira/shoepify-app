@@ -368,6 +368,34 @@ body {
     color: white;
     background-color: $middle-purple;
     border-right: 3px solid $light-blue;
+    position: relative;
+    z-index: 9999;
+
+    #filters {
+      padding-top: 25rem;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      right: -1rem;
+      width: 2.5rem;
+      background-color: $darker-blue;
+      text-transform: uppercase;
+      visibility: hidden;
+      transition: all 0.3s ease;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $darker-purple;
+      }
+
+      p {
+        font-family: 'Oxygen', sans-serif;
+
+        span {
+          display: block;
+        }
+      }
+    }
 
     h1 {
       font-family: 'Sora', sans-serif;
@@ -735,7 +763,7 @@ body {
 
       h1 {
         letter-spacing: 0.2rem;
-        margin-right: 15rem;
+        margin-right: 10vw;
       }
 
       .row-wrapper {
@@ -837,6 +865,194 @@ body {
 
     img {
       height: 190px;
+    }
+  }
+}
+
+@media (max-width: 1140px) {
+  #shop #list-items .card {
+    height: 250px;
+    width: 200px;
+
+    img {
+      height: 190px;
+    }
+  }
+
+  #checkout .items-list li {
+    font-size: 1.25rem;
+
+    h2 {
+      text-align: center;
+    }
+
+    .bi {
+      font-size: 2rem;
+    }
+
+    .bi-x-circle {
+      font-size: 2.5rem;
+    }
+  }
+
+  #checkout #total-checkout h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  #shop #sidebar #price {
+    width: 10rem;
+  }
+
+  #shop #list-items .card {
+    width: 180px;
+  }
+
+  #checkout .items-list li {
+    font-size: 1rem;
+  }
+
+  #checkout #total-checkout {
+    & h1,
+    & h2 {
+      font-size: 3.3rem;
+    }
+
+    .column-wrapper button {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  #header {
+    nav {
+      font-size: 2.5rem;
+
+      #site-title {
+        font-size: 3.3rem;
+      }
+    }
+  }
+
+  #home {
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    button {
+      font-size: 1.5rem;
+    }
+  }
+
+  #shop #list-items .card {
+    height: 280px;
+    width: 250px;
+
+    img {
+      height: 210px;
+    }
+  }
+
+  #buttons {
+    margin: 1rem 0 !important;
+  }
+
+  #shop #overlay #chosen-shoe .infos-display {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+    }
+
+    #add-to-cart button {
+      font-size: 1.5rem;
+    }
+  }
+
+  #shop #overlay #chosen-shoe .image-display {
+    font-size: 3.3rem;
+  }
+
+  #checkout #total-checkout {
+    & h2,
+    & h1 {
+      font-size: 2.5rem;
+    }
+  }
+
+  #checkout .message {
+    font-size: 2.5rem;
+  }
+
+  #checkout .items-list li {
+    img {
+      height: 80px;
+      width: 80px;
+    }
+
+    .row-wrapper {
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 790px) {
+  #shop #sidebar {
+    position: absolute;
+    transform: translateX(-90%);
+    width: 20rem;
+
+    #filters {
+      visibility: visible;
+    }
+  }
+
+  #shop #list-items {
+    padding: 5rem 0 0 10rem;
+  }
+
+  #checkout {
+    @include flexColumn();
+
+    .items-list {
+      height: 90%;
+      border: none;
+    }
+
+    #total-checkout {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 15%;
+      padding: 2rem;
+
+      h1 {
+        white-space: nowrap;
+      }
+
+      .column-wrapper button {
+        height: 5rem;
+        width: 10rem;
+      }
+    }
+    .items-list,
+    #total-checkout {
+      width: 100%;
     }
   }
 }
